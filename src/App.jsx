@@ -5,24 +5,27 @@ import Navbar2 from "./components/navbar2";
 import Home from "./components/home";
 import ProductGrid from "./components/ProductGrid";
 import ProductDetails from "./pages/ProductDetails";
+import AddAddress from "./components/AddAddress";
+import OrderSummary from "./components/OrderSummary";
 
-// Wrapper to handle navbar switching based on route
+// Layout wrapper to conditionally show navbar
 const Layout = () => {
   const location = useLocation();
 
-  // Check current route
   const isProductDetails = location.pathname.startsWith("/product/");
+  const isAddAddress = location.pathname === "/add-address";
+  const isOrderSummary = location.pathname === "/order-summary";
 
   return (
     <div className="bg-gray-200 min-h-screen">
-      {/* Conditionally render navbars */}
-      {isProductDetails ? <Navbar2 /> : <Navbar />}
+      {isProductDetails || isAddAddress || isOrderSummary ? <Navbar2 /> : <Navbar />}
 
-      {/* Routes */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<ProductGrid />} />
         <Route path="/product/:id" element={<ProductDetails />} />
+        <Route path="/add-address" element={<AddAddress />} />
+        <Route path="/order-summary" element={<OrderSummary />} />
       </Routes>
     </div>
   );
