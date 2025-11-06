@@ -83,6 +83,7 @@ const ProductDetails = () => {
     <div className="bg-white mb-10 min-h-screen">
       <div className="max-w-screen-xl mx-auto">
         {/* ---------- IMAGE SLIDER ---------- */}
+        {/* ---------- IMAGE SLIDER ---------- */}
         <div
           className="relative w-full overflow-hidden flex justify-center items-center"
           onTouchStart={handleTouchStart}
@@ -114,7 +115,7 @@ const ProductDetails = () => {
 
         {/* ---------- PRODUCT INFO ---------- */}
         <div className="p-4">
-          <p className="text-gray-700 text-sm mt-2">{description}</p>
+          <p className="text-gray-700 text-sm mt-2">{name}</p>
           {/* Logo */}
           <img
             src={Logo}

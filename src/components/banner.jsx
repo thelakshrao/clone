@@ -22,7 +22,7 @@ const Banner = () => {
   const goToSlide = (index) => setCurrent(index);
 
   return (
-    <div className="relative w-full overflow-hidden">
+    <div className="pl-2 pr-2 relative w-full overflow-hidden rounded-xl">
       {/* Slides */}
       {banners.map((banner, index) => (
         <div
@@ -31,7 +31,11 @@ const Banner = () => {
             index === current ? "block" : "hidden"
           }`}
         >
-          <img src={banner} alt={`Banner ${index + 1}`} className="w-full" />
+          <img
+            src={banner}
+            alt={`Banner ${index + 1}`}
+            className="w-full rounded-xl"
+          />
         </div>
       ))}
 

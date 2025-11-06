@@ -1,8 +1,9 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const OrderSummary = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const { product, quantity } = location.state || {};
 
   if (!product)
@@ -11,12 +12,19 @@ const OrderSummary = () => {
   const { name, images, price, originalPrice, discount } = product;
   const productImage = images[0];
 
+  const handleContinue = () => {
+    navigate("/payment", { state: { product, quantity } });
+  };
+
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center pb-24">
       <div className="bg-white w-full max-w-md shadow-md">
         {/* Header */}
         <div className="flex items-center border-b border-gray-200 px-4 py-3">
-          <button className="text-2xl text-black mr-3" onClick={() => history.back()}>
+          <button
+            className="text-2xl text-black mr-3"
+            onClick={() => history.back()}
+          >
             &larr;
           </button>
           <h5 className="text-lg font-semibold">Order Summary</h5>
@@ -103,7 +111,10 @@ const OrderSummary = () => {
           </span>
           <span className="font-bold text-lg">₹{price}</span>
         </div>
-        <button className="bg-yellow-400 hover:bg-yellow-500 px-6 py-2 font-bold rounded">
+        <button
+          onClick={handleContinue}
+          className="bg-yellow-400 hover:bg-yellow-500 px-6 py-2 font-bold rounded"
+        >
           Continue
         </button>
       </div>
