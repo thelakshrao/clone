@@ -454,7 +454,7 @@ const products = [
   },
   {
     id: 28,
-    name: "Crocs Bistro Clog or Crocs Specialist II Clog",
+    name: "Crocs Specialist II Clog",
     brand: "Crocs",
     price: 199,
     originalPrice: 999,

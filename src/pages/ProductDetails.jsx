@@ -81,7 +81,7 @@ const ProductDetails = () => {
 
   return (
     <div className="bg-white mb-10 min-h-screen">
-      <div className="max-w-screen-xl mx-auto">
+      <div className="max-w-xl mx-auto">
         {/* ---------- IMAGE SLIDER ---------- */}
         {/* ---------- IMAGE SLIDER ---------- */}
         <div
@@ -124,8 +124,8 @@ const ProductDetails = () => {
             onClick={() => navigate("/")}
           />
 
-          <div className="flex items-end mt-1 gap-3">
-            <span className="text-green-600 text-base px-2 py-0.5 font-bold">
+          <div className="flex items-end mt-0.5 gap-3">
+            <span className="text-green-600 text-base py-0.5 font-bold">
               {discount}% off
             </span>
             <span className="text-gray-400 line-through text-lg">
@@ -135,12 +135,12 @@ const ProductDetails = () => {
           </div>
         </div>
         {/* ---------- DIVIDER ---------- */}
-        <hr className="my-2 border-gray-200" />
+        {/* <hr className="my-2 border-gray-200" /> */}
 
         {/* dela offer */}
-        <div className="text-l justify-center items-center text-center">
+        {/* <div className="text-l justify-center items-center text-center">
           Offer ends in 1:13
-        </div>
+        </div> */}
 
         {/* ---------- DIVIDER ---------- */}
         <hr className="my-2 border-gray-200" />
@@ -181,7 +181,7 @@ const ProductDetails = () => {
 
       {/* ---------- FIXED BUY BUTTONS ---------- */}
       <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-20">
-        <div className="flex h-12 max-w-screen-xl mx-auto">
+        <div className="flex h-12 max-w-xl mx-auto">
           <button className="flex-1 bg-white text-xs text-black font-semibold flex items-center justify-center hover:bg-gray-100 transition">
             Add to Cart
           </button>
@@ -191,8 +191,8 @@ const ProductDetails = () => {
             onClick={() =>
               navigate("/add-address", {
                 state: {
-                  product: product, // pass entire product object
-                  quantity: 1, // you can make this dynamic if user selects qty
+                  product: product,
+                  quantity: 1,
                 },
               })
             }

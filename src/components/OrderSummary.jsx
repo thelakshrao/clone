@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 const OrderSummary = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { product, quantity } = location.state || {};
+  const { product, quantity, address } = location.state || {};
 
   if (!product)
     return <p className="pt-20 text-center">No product selected!</p>;
@@ -13,7 +13,7 @@ const OrderSummary = () => {
   const productImage = images[0];
 
   const handleContinue = () => {
-    navigate("/payment", { state: { product, quantity } });
+    navigate("/payment", { state: { product, quantity, address } });
   };
 
   return (
@@ -23,7 +23,7 @@ const OrderSummary = () => {
         <div className="flex items-center border-b border-gray-200 px-4 py-3">
           <button
             className="text-2xl text-black mr-3"
-            onClick={() => history.back()}
+            onClick={() => navigate(-1)}
           >
             &larr;
           </button>
@@ -33,9 +33,19 @@ const OrderSummary = () => {
         {/* Delivered To */}
         <div className="px-4 py-3 border-b border-gray-100">
           <h6 className="text-gray-500 text-sm mb-1">Delivered to:</h6>
-          <p className="font-semibold">Lakshay</p>
-          <p className="text-gray-500 text-sm">50, Hone, Gurgaon 122001</p>
-          <p className="text-gray-500 text-sm">8282425453</p>
+          {address ? (
+            <>
+              <p className="font-semibold">{address.name}</p>
+              <p className="text-gray-500 text-sm">
+                {address.house}, {address.area}, {address.city} -{" "}
+                {address.pincode}
+              </p>
+              <p className="text-gray-500 text-sm">{address.state}</p>
+              <p className="text-gray-500 text-sm">{address.phone}</p>
+            </>
+          ) : (
+            <p className="text-gray-500 text-sm">No address provided</p>
+          )}
         </div>
 
         {/* Product Card */}
@@ -62,7 +72,9 @@ const OrderSummary = () => {
           <p className="font-semibold mb-3">Price Details</p>
 
           <div className="flex justify-between mb-2">
-            <span>Price ({quantity} item{quantity > 1 ? "s" : ""})</span>
+            <span>
+              Price ({quantity} item{quantity > 1 ? "s" : ""})
+            </span>
             <span>₹{originalPrice}</span>
           </div>
           <div className="flex justify-between mb-2">
